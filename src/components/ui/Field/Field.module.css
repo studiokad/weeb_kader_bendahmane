@@ -1,0 +1,143 @@
+/**
+ * Champ de formulaire de la maquette : pas de cadre, un simple trait sous le
+ * champ, et un libelle violet CENTRE qui tient lieu de texte indicatif.
+ *
+ * Au focus, le champ prend un cadre complet et le libelle remonte au-dessus :
+ * c'est l'etat que montre la maquette sur le troisieme champ de la page Contact.
+ */
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--sp-5);
+}
+
+/* ---------- Libelle ---------- */
+
+.label {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--sp-5) + 12px);
+  transform: translateX(-50%);
+  color: var(--color-field-label);
+  font-size: var(--fs-lg);
+  pointer-events: none;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    font-size var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+
+/* Champ actif ou rempli : le libelle remonte, retrecit et se cale a gauche. */
+.field:focus-within .label,
+.filled .label {
+  transform: translate(-50%, -2.1rem) scale(0.72);
+  color: var(--color-accent-light);
+  font-weight: var(--fw-medium);
+}
+
+.hasError:focus-within .label,
+.hasError.filled .label {
+  color: var(--color-danger);
+}
+
+/* ---------- Controle ---------- */
+
+.control {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 48px;
+  background-color: transparent;
+  color: var(--color-text);
+  text-align: center;
+  font-size: var(--fs-md);
+
+  /* Etat au repos : un simple trait sous le champ. */
+  border: 1px solid transparent;
+  border-bottom-color: var(--color-border);
+  border-radius: 0;
+
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    border-radius var(--dur-base) var(--ease-out);
+}
+
+.control:hover:not(:disabled):not(:focus) {
+  border-bottom-color: var(--color-accent-light);
+}
+
+/* Etat au focus : le trait devient un cadre complet. */
+.control:focus {
+  outline: none;
+  border-color: var(--color-accent-light);
+  border-radius: var(--radius-sm);
+  background-color: rgb(147 51 234 / 8%);
+}
+
+.control::placeholder {
+  color: transparent;
+}
+
+.control:focus::placeholder {
+  color: var(--color-field-label);
+}
+
+.hasError .control {
+  border-bottom-color: var(--color-danger);
+}
+
+.hasError .control:focus {
+  border-color: var(--color-danger);
+  background-color: rgb(248 113 113 / 8%);
+}
+
+textarea.control {
+  min-height: 120px;
+  resize: vertical;
+  text-align: center;
+}
+
+select.control {
+  appearance: none;
+  cursor: pointer;
+  text-align: center;
+  text-align-last: center;
+}
+
+/* Les options s'affichent dans le menu natif du systeme : il leur faut un
+   fond opaque, sinon elles heritent d'un fond transparent illisible. */
+select.control option {
+  background-color: var(--c-navy-800);
+  color: var(--color-text);
+}
+
+/* ---------- Messages ---------- */
+
+.error {
+  margin-top: var(--sp-2);
+  color: var(--color-danger);
+  font-size: var(--fs-xs);
+  text-align: center;
+  animation: slide-in var(--dur-base) var(--ease-out);
+}
+
+.hint {
+  margin-top: var(--sp-2);
+  color: var(--color-text-dim);
+  font-size: var(--fs-xs);
+  text-align: center;
+  opacity: 0.75;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
