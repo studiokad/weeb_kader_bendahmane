@@ -1,0 +1,121 @@
+/**
+ * Pied de page CLAIR sur un site sombre : c'est le parti pris de la maquette.
+ * Le renversement des couleurs vient de la classe utilitaire `.surface-light`
+ * posee sur la balise <footer> ; ce fichier ne redefinit aucune couleur brute.
+ */
+
+.footer {
+  margin-top: auto;
+  padding-block: var(--sp-8) var(--sp-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-7);
+  padding-bottom: var(--sp-7);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.logo:hover {
+  color: var(--color-accent);
+}
+
+.columnTitle {
+  margin-bottom: var(--sp-4);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--surface-light-label);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.link {
+  display: inline-block;
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+  transition:
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+/* ---------- Bas de page ---------- */
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  align-items: flex-start;
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.copyright {
+  color: var(--color-text);
+  font-size: var(--fs-sm);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.social {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  transition:
+    color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.social:hover {
+  color: var(--color-accent);
+  background-color: var(--surface-light-border);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Colonne de marque plus large, puis les quatre colonnes de liens. */
+  .grid {
+    grid-template-columns: 1.4fr repeat(4, 1fr);
+    gap: var(--sp-6);
+  }
+}
