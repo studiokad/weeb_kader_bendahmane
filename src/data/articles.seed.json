@@ -1,0 +1,38 @@
+[
+  {
+    "id": "a1",
+    "slug": "design-system-des-le-premier-sprint",
+    "title": "Pourquoi poser un design system dès le premier sprint",
+    "excerpt": "Trois couleurs, une échelle typographique et six espacements suffisent à rendre un site cohérent. Le reste n’est que discipline.",
+    "content": "Un design system n’est pas un livrable de fin de projet, c’est un outil de début de projet.\n\nSur une interface sans tokens, chaque nouvelle page réintroduit ses propres marges et ses propres nuances de gris. Au bout de six écrans, personne ne sait plus quelle valeur fait autorité.\n\nEn déclarant les couleurs, les espacements et les tailles de texte dans un seul fichier, on obtient deux garanties. La première : changer l’identité visuelle du site devient une modification d’un fichier, pas une chasse au code en dur. La seconde : un nouveau composant hérite automatiquement des bonnes valeurs, sans qu’on ait à les rappeler.\n\nLe coût d’entrée est d’une heure. Le coût de l’absence se paie à chaque écran.",
+    "author": "Kader Bendahmane",
+    "category": "Design",
+    "readingTime": 4,
+    "publishedAt": "2026-08-18",
+    "cover": "linear-gradient(135deg, #4f2ff0, #9b7bff)"
+  },
+  {
+    "id": "a2",
+    "slug": "responsive-sans-media-query",
+    "title": "Le responsive qui tient sans multiplier les media queries",
+    "excerpt": "clamp(), grid auto-fit et unités relatives couvrent la majorité des cas. Les points de rupture servent aux vraies bascules de mise en page.",
+    "content": "La réaction réflexe devant un écran à adapter est d’ajouter un point de rupture. C’est souvent la mauvaise réponse.\n\nUne taille de titre n’a pas besoin de trois paliers : clamp() lui donne une valeur minimale, une valeur maximale et une progression continue entre les deux. Une grille de cartes n’a pas besoin de savoir combien de colonnes afficher : repeat(auto-fit, minmax(...)) le déduit de la place disponible.\n\nLes media queries redeviennent alors ce qu’elles devraient être : le lieu où l’on décrit une vraie bascule, celle où la mise en page change de nature, par exemple un menu qui passe d’une barre horizontale à un panneau latéral.\n\nMoins de points de rupture, c’est moins d’états à tester, donc moins d’écrans cassés.",
+    "author": "Kader Bendahmane",
+    "category": "CSS",
+    "readingTime": 5,
+    "publishedAt": "2026-08-22",
+    "cover": "linear-gradient(135deg, #0b0d12, #4f2ff0)"
+  },
+  {
+    "id": "a3",
+    "slug": "animations-qui-servent-a-quelque-chose",
+    "title": "Des animations qui servent à quelque chose",
+    "excerpt": "Une transition doit expliquer un changement d’état. Si elle ne dit rien à l’utilisateur, elle ne fait que retarder son geste.",
+    "content": "Une bonne animation d’interface répond à une question que l’utilisateur se pose : où est parti cet élément, d’où vient ce panneau, mon clic a-t-il été pris en compte.\n\nTrois repères tiennent la plupart des cas. La durée : entre 150 et 300 millisecondes pour un retour immédiat, au-delà on ressent l’attente. La courbe : une sortie rapide puis un ralentissement final imite le mouvement réel bien mieux qu’une progression linéaire. La propriété animée : transform et opacity sont composées par le processeur graphique, contrairement à width ou top qui forcent un recalcul de mise en page à chaque image.\n\nDernier point, non négociable : respecter prefers-reduced-motion. Pour une partie des utilisateurs, une animation de trop n’est pas une coquetterie, c’est un malaise physique.",
+    "author": "Kader Bendahmane",
+    "category": "UX",
+    "readingTime": 3,
+    "publishedAt": "2026-08-27",
+    "cover": "linear-gradient(135deg, #c9f24d, #4f2ff0)"
+  }
+]

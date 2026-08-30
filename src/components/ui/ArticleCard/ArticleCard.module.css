@@ -1,0 +1,110 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Le degrade de couverture remplace une image : aucun fichier a charger,
+   et chaque article garde une identite visuelle propre. */
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.coverInner {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.card:hover .coverInner {
+  transform: scale(1.06);
+}
+
+.category {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-1) var(--sp-3);
+  background-color: rgb(255 255 255 / 92%);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+
+  /* Couleur fixe et non tokenisee : la pastille est posee sur une pastille
+     blanche opaque, jamais sur le fond de page. Elle ne doit donc PAS suivre
+     `--color-text`, qui est blanc sur ce theme sombre. */
+  color: var(--c-navy-900);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--sp-3);
+  padding: var(--sp-5);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.title {
+  font-size: var(--fs-md);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.card:hover .title {
+  color: var(--color-accent);
+}
+
+.excerpt {
+  flex: 1;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+
+  /* Trois lignes maximum : toutes les cartes d'une grille gardent la meme
+     hauteur, quel que soit le nombre de caracteres du chapeau. */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+}
+
+.arrow {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.card:hover .arrow {
+  transform: translateX(4px);
+}
