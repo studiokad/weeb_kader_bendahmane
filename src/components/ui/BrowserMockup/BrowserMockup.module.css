@@ -1,0 +1,171 @@
+/**
+ * Fenetre de navigateur factice qui met en scene une capture d'application.
+ * Entierement dessinee en CSS : aucune image a charger, et le visuel reste
+ * net sur les ecrans a haute densite.
+ */
+
+.window {
+  overflow: hidden;
+  background-color: var(--c-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---------- Barre de titre ---------- */
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background-color: #f1f5f9;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot:nth-child(1) { background-color: #ff5f57; }
+.dot:nth-child(2) { background-color: #febc2e; }
+.dot:nth-child(3) { background-color: #28c840; }
+
+.urlBar {
+  flex: 1;
+  padding: 4px var(--sp-4);
+  background-color: var(--c-white);
+  border-radius: var(--radius-sm);
+  color: #94a3b8;
+  font-size: var(--fs-xs);
+  text-align: center;
+}
+
+.navArrows {
+  display: flex;
+  gap: var(--sp-2);
+  color: #94a3b8;
+}
+
+/* ---------- Contenu factice ---------- */
+
+.body {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  background-color: #dbeafe;
+  min-height: 260px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.sidebarRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.shape {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid #93c5fd;
+}
+
+.shapeCircle { border-radius: 50%; }
+.shapeTriangle {
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-bottom-color: #93c5fd;
+}
+
+.line {
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background-color: var(--c-white);
+}
+
+.lineAccent { background-color: #93c5fd; }
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.card {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  padding: var(--sp-3);
+  background-color: var(--c-white);
+  border-radius: var(--radius-sm);
+}
+
+/* Formes decoratives dans les vignettes : rappellent le contenu editorial. */
+.quarter {
+  width: 60%;
+  aspect-ratio: 1;
+  background-color: #fcd34d;
+  border-radius: 0 0 0 100%;
+}
+
+.diamond {
+  width: 55%;
+  aspect-ratio: 1;
+  border: 2px solid #93c5fd;
+  transform: rotate(45deg);
+}
+
+.circle {
+  width: 55%;
+  aspect-ratio: 1;
+  background-color: #93c5fd;
+  border-radius: 50%;
+}
+
+.stars {
+  color: #fcd34d;
+  font-size: var(--fs-sm);
+  letter-spacing: 2px;
+}
+
+/* Sous 640px la fenetre reste lisible : on retire la colonne laterale. */
+@media (max-width: 639px) {
+  .body {
+    grid-template-columns: 1fr;
+    min-height: 200px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+  }
+}

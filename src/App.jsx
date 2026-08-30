@@ -1,11 +1,23 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout/Layout";
+import Home from "./pages/Home/Home";
+
 /**
- * Racine de l'application.
+ * Table de routage de l'application.
  *
- * Squelette provisoire : le routage et les pages arrivent avec les ecrans
- * eux-memes, une fois les composants communs en place.
+ * Toutes les routes sont imbriquees dans <Layout>, qui fournit l'en-tete et le
+ * pied de page communs ; seul le contenu central change d'une page a l'autre.
  */
 function App() {
-  return <h1>Weeb</h1>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

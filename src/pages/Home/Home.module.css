@@ -1,0 +1,215 @@
+/* ================= Hero ================= */
+
+.hero {
+  padding-block: clamp(3rem, 1.5rem + 7vw, 6rem) var(--sp-8);
+  text-align: center;
+}
+
+.title {
+  max-width: 18ch;
+  margin-inline: auto;
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+}
+
+/* Mot mis en avant en violet clair, comme "Web" dans la maquette. */
+.accent {
+  color: var(--color-accent-light);
+}
+
+/* Mot souligne d'un trait violet qui se dessine au chargement. */
+.underlined {
+  position: relative;
+  white-space: nowrap;
+}
+
+.underlined::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.1em;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-accent-light);
+  border-radius: var(--radius-pill);
+  transform-origin: left;
+  animation: draw 700ms var(--ease-out) 250ms backwards;
+}
+
+@keyframes draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.lead {
+  max-width: 68ch;
+  margin: var(--sp-5) auto 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+}
+
+.heroVisual {
+  max-width: 880px;
+  margin: var(--sp-8) auto 0;
+
+  /* La fenetre monte legerement a l'entree dans la page. */
+  animation: rise var(--dur-slow) var(--ease-out) 200ms backwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= Ils nous font confiance ================= */
+
+.trust {
+  padding-block: var(--section-y);
+  text-align: center;
+}
+
+.trustTitle {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--sp-7);
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-5) var(--sp-7);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-text);
+
+  /* Pleins et lisibles, comme sur la maquette. Seul le survol les distingue. */
+  transition:
+    color var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.logo:hover {
+  color: var(--color-accent-light);
+  transform: translateY(-3px);
+}
+
+/* ================= Sections alternees ================= */
+
+.feature {
+  padding-block: var(--section-y);
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-7);
+  align-items: center;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--sp-4);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.featureTitle {
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--sp-5);
+}
+
+.featureText {
+  max-width: 52ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+}
+
+.featureLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.featureLink:hover {
+  color: var(--color-accent-light);
+}
+
+.featureLink svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.featureLink:hover svg {
+  transform: translateX(5px);
+}
+
+/* ---------- Forme geometrique ---------- */
+
+/**
+ * Empilement de carres tournes, repris de la maquette. Chaque carre est un
+ * element vide positionne au centre ; seule sa rotation change, produite par
+ * une variable CSS passee en JSX. Le carre plein est le dernier de la pile.
+ */
+.shapeStack {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  max-width: 340px;
+  margin-inline: auto;
+}
+
+.square {
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 1;
+  border: 2px solid var(--color-accent);
+  transform: rotate(var(--angle, 0deg));
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+/* Au survol, la pile s'ouvre en eventail. */
+.shapeStack:hover .square {
+  transform: rotate(calc(var(--angle, 0deg) * 1.55));
+}
+
+.squareFilled {
+  background-color: var(--c-magenta-700);
+  border-color: var(--c-magenta-700);
+}
+
+@media (min-width: 1024px) {
+  .featureGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-8);
+  }
+
+  /* Deuxieme section : le visuel passe a gauche, le texte a droite. */
+  .reversed .featureVisual {
+    order: -1;
+  }
+}
