@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
 
 /**
  * Table de routage de l'application.
@@ -16,6 +17,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
