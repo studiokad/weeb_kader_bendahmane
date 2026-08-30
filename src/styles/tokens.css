@@ -1,0 +1,163 @@
+/**
+ * tokens.css — Design tokens du site Weeb.
+ *
+ * Point d'entree unique de l'identite visuelle. Toutes les valeurs de couleur
+ * ont ete relevees au pixel sur la maquette Figma fournie par le client
+ * (dossier /maquette), et non estimees a l'oeil.
+ *
+ * Le site est sombre par defaut ; seul le pied de page est clair. Ce
+ * renversement est porte par les tokens `--surface-light-*`, pas par des
+ * valeurs ecrites en dur dans le composant.
+ */
+
+:root {
+  /* ---------- Palette relevee sur la maquette ---------- */
+
+  /* Bleus nuit : fond du site et de la barre de navigation */
+  --c-navy-900: #0f172a; /* fond de page */
+  --c-navy-800: #181e2d; /* barre de navigation flottante */
+  --c-navy-700: #1e2638; /* separateurs sur fond sombre */
+
+  /* Violet indigo : fond des cartes de formulaire */
+  --c-plum-800: #21223f;
+  --c-plum-600: #70539d; /* bordure de champ */
+  --c-plum-500: #986bcd; /* libelle de champ */
+
+  /* Violets d'accent */
+  --c-purple-700: #7e22ce;
+  --c-purple-600: #9333ea; /* boutons, elements actifs */
+  --c-purple-400: #c084fc; /* mots mis en avant dans les titres */
+  --c-purple-300: #d8b4fe;
+
+  --c-magenta-700: #be185d; /* forme geometrique de la page d'accueil */
+
+  /* Bleus clairs : textes secondaires sur fond sombre */
+  --c-blue-100: #dbeafe;
+  --c-blue-200: #bfdbfe;
+
+  /* Gris : pied de page clair */
+  --c-slate-500: #64748b;
+  --c-slate-400: #afbaca; /* intitules de colonnes du pied de page */
+  --c-slate-200: #e2e8f0;
+  --c-slate-050: #f8fafc;
+  --c-white: #ffffff;
+
+  --c-danger: #f87171;
+  --c-success: #4ade80;
+
+  /* ---------- Roles semantiques : fond sombre (par defaut) ---------- */
+  --color-bg: var(--c-navy-900);
+  --color-bg-nav: var(--c-navy-800);
+  --color-surface: var(--c-plum-800);
+  --color-border: var(--c-plum-600);
+  --color-border-subtle: var(--c-navy-700);
+
+  --color-text: var(--c-white);
+  --color-text-muted: var(--c-blue-100);
+  --color-text-dim: var(--c-blue-200);
+
+  --color-accent: var(--c-purple-600);
+  --color-accent-hover: var(--c-purple-700);
+  --color-accent-light: var(--c-purple-400);
+  --color-accent-pale: var(--c-purple-300);
+  --color-field-label: var(--c-plum-500);
+
+  /* Voile violet translucide : pastilles et surlignages sur fond sombre */
+  --color-accent-wash: rgb(147 51 234 / 16%);
+
+  /* Squelettes de chargement : base et reflet qui la traverse */
+  --color-skeleton: var(--c-plum-800);
+  --color-skeleton-shine: var(--c-plum-600);
+
+  --color-danger: var(--c-danger);
+  --color-success: var(--c-success);
+  --color-focus-ring: var(--c-purple-400);
+
+  /* ---------- Roles semantiques : surface claire (pied de page) ---------- */
+  --surface-light-bg: var(--c-white);
+  --surface-light-text: var(--c-navy-900);
+  --surface-light-muted: var(--c-slate-500);
+  --surface-light-label: var(--c-slate-400);
+  --surface-light-border: var(--c-slate-200);
+
+  /* ---------- Typographie ---------- */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Poppins", "Inter", system-ui, sans-serif;
+
+  /* Echelle fluide : progresse de 375px a 1440px sans media query */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-lg: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.6rem, 1.25rem + 1.5vw, 2.5rem);
+  --fs-2xl: clamp(2rem, 1.35rem + 2.8vw, 3.4rem);
+  --fs-3xl: clamp(2.3rem, 1.4rem + 4vw, 4.2rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --lh-tight: 1.12;
+  --lh-snug: 1.35;
+  --lh-normal: 1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.1em;
+
+  /* ---------- Espacements (base 4px) ---------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+
+  --section-y: clamp(3.5rem, 2rem + 7vw, 7.5rem);
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --container-pad: clamp(1.25rem, 4vw, 3rem);
+
+  /* Hauteur de la barre flottante + son decalage depuis le haut */
+  --nav-height: 72px;
+  --nav-offset: var(--sp-5);
+
+  /* ---------- Rayons ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Ombres ---------- */
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 30%);
+  --shadow-lg: 0 24px 60px rgb(0 0 0 / 45%);
+  --shadow-accent: 0 10px 30px rgb(147 51 234 / 35%);
+
+  /* ---------- Mouvement ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 260ms;
+  --dur-slow: 500ms;
+
+  /* ---------- Elevation ---------- */
+  --z-header: 100;
+  --z-overlay: 200;
+}
+
+/**
+ * Points de rupture de reference :
+ *   mobile   : < 640px   (design de base, mobile-first)
+ *   tablette : >= 640px
+ *   desktop  : >= 1024px
+ *   large    : >= 1440px  (largeur de la maquette Figma)
+ */
