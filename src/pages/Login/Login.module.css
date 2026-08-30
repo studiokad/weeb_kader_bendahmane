@@ -1,0 +1,129 @@
+/**
+ * La maquette ne fait pas remplir tout l'ecran a ce bloc : le pied de page
+ * suit directement le formulaire. On regle donc la hauteur par le rythme
+ * vertical, sans min-height, qui creerait un grand vide sur les ecrans hauts.
+ */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: var(--sp-8) var(--sp-9);
+  text-align: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: 420px;
+}
+
+.title {
+  margin-bottom: var(--sp-6);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-extrabold);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* Le champ mot de passe reserve la place du bouton de bascule. */
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordWrapper input {
+  padding-right: 48px;
+}
+
+.toggle {
+  position: absolute;
+  right: 0;
+  top: calc(var(--sp-5) + 4px);
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  color: var(--color-field-label);
+  transition:
+    color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+
+.toggle:hover {
+  color: var(--color-accent-light);
+  background-color: rgb(147 51 234 / 12%);
+}
+
+.submitRow {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--sp-4);
+}
+
+.forgot {
+  display: inline-block;
+  margin-top: var(--sp-6);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.forgot:hover {
+  color: var(--color-accent-light);
+}
+
+.signup {
+  margin-top: var(--sp-5);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  opacity: 0.8;
+}
+
+.signupLink {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.signupLink:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+/* ---------- Bandeaux d'etat ---------- */
+
+.banner {
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+}
+
+.bannerError {
+  border: 1px solid var(--color-danger);
+  color: var(--color-danger);
+}
+
+.bannerSuccess {
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+}
+
+/* Rappel des identifiants de demonstration : le correcteur peut se connecter. */
+.demo {
+  margin-top: var(--sp-7);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-dim);
+  font-size: var(--fs-xs);
+  opacity: 0.7;
+}
+
+.demo code {
+  color: var(--color-accent-light);
+  font-weight: var(--fw-semibold);
+}
