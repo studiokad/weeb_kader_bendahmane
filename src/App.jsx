@@ -6,6 +6,7 @@ import Blog from "./pages/Blog/Blog";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
+import NotFound from "./pages/NotFound/NotFound";
 
 /**
  * Table de routage de l'application.
@@ -27,6 +28,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/nouveau" element={<ArticleNew />} />
           <Route path="/blog/:slug" element={<Article />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
